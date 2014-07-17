@@ -24,11 +24,11 @@ Make sure to use the cordova plugin add command to add the following plugins:
   'org.apache.cordova.device',  
   'org.apache.cordova.device-motion',  
   'org.apache.cordova.device-orientation',  
-  'org.apache.cordova.dialogs',
-  'org.apache.cordova.file',
-  'org.apache.cordova.geolocation',
-  'org.apache.cordova.inappbrowser',
-  'org.apache.cordova.vibration'
+  'org.apache.cordova.dialogs',  
+  'org.apache.cordova.file',  
+  'org.apache.cordova.geolocation',  
+  'org.apache.cordova.inappbrowser',  
+  'org.apache.cordova.vibration'  
 
 For battery-status you need the currently unpublished version from github:
 
