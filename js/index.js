@@ -49,7 +49,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        var currY = 0;
+        var currX = 0;
         var currY = 0;
         var dX = 0;
         var dY = 0;
@@ -159,7 +159,7 @@ var app = {
                 globe = null;
             }
             if (deviceEAdded) { //deviceorientation
-                document.removeEventListener('deviceorientation', deviceOrientationEvent);
+                window.removeEventListener('deviceorientation', deviceOrientationEvent);
                 deviceEAdded = null;
             }
             if (browserRef) {
@@ -355,14 +355,14 @@ var app = {
                 //animate the changes in dx and dy
                 frameID = requestAnimationFrame(handleMovement);
                 context.clearRect(currX, currY, 60, 60);
-                currX += dX;
-                currY += dY;
+                currX -= dX;
+                currY -= dY;
                 if (currX >= (canvas.width - 20))(currX = canvas.width - 20);
                 if (currX <= 20) currX = 20;
                 if (currY >= (canvas.height - 20))(currY = canvas.height - 20);
                 if (currY <= 20) currY = 20;
                 //console.log("currX = " + currX + " currY = " + currY);
-                drawBall(currX, currY, .9)
+                drawBall(currX, currY, .9);
             }
 
             canvas = document.createElement('canvas');
@@ -378,7 +378,7 @@ var app = {
             currY = canvas.height / 2;
 
             //Add the event handler and launch the animation
-            document.addEventListener('deviceorientation', deviceOrientationEvent);
+            window.addEventListener('deviceorientation', deviceOrientationEvent);
             deviceEAdded = true;
             handleMovement();
         }
@@ -473,9 +473,7 @@ var app = {
 
             function runCompassUpdate() {
                 context.clearRect(0, 0, canvas.width, canvas.height);
-                var xStart = (canvas.width - img.width) / 2;
-                var yStart = (canvas.height - img.height) / 2;
-                var myrads = Math.PI / 180 * (360 - myHeading);
+                var myrads = Math.PI / 180 * myHeading;
                 context.font = '18pt Calibri';
                 context.fillStyle = 'white';
                 context.fillText("Current Heading: " + myHeading, canvas.width * .095, canvas.height * .05);
@@ -495,7 +493,6 @@ var app = {
 
             function onSuccess(heading) {
                 //Retrieve the compass heading
-                var element = document.getElementById('heading');
                 myHeading = (heading.magneticHeading).toFixed(2);
                 console.log("My Heading = " + myHeading);
                 runCompassUpdate();

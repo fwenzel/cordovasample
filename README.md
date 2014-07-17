@@ -6,9 +6,10 @@ and Cordova http://cordova.apache.org/
 
 If you want to run this you will need to have Cordova installed and a project created  
 
-    $ cordova create test com.example.test TestApp  
-cd to the test directory and delete the www folder      
-checkout the code into this directory.  
+    $ cordova create sample org.mozilla.cordovaSample "Cordova Sample"
+
+cd to the `sample` directory and delete the `www` folder
+checkout the code into this directory.
 
     git clone https://github.com/JasonWeathersby/cordovasample www     
 
@@ -23,8 +24,14 @@ Make sure to use the cordova plugin add command to add the following plugins:
   'org.apache.cordova.device',  
   'org.apache.cordova.device-motion',  
   'org.apache.cordova.device-orientation',  
-  'org.apache.cordova.dialogs',  
-  'org.apache.cordova.geolocation',  
-  'org.apache.cordova.vibration'   
+  'org.apache.cordova.dialogs',
+  'org.apache.cordova.file',
+  'org.apache.cordova.geolocation',
+  'org.apache.cordova.inappbrowser',
+  'org.apache.cordova.vibration'
 
-Currently you Currently you will need to take the manifest.webapp file in the source and copy it to the merges/firefoxos directory
+For battery-status you need the currently unpublished version from github:
+
+    cordova plugin add https://github.com/apache/cordova-plugin-battery-status
+
+Currently you will need to take the manifest.webapp file in the source and copy it to the merges/firefoxos directory
