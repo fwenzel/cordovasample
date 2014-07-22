@@ -11,12 +11,16 @@ If you want to run this you will need to have Cordova installed and a project cr
 cd to the `sample` directory and delete the `www` folder
 checkout the code into this directory.
 
-    git clone https://github.com/JasonWeathersby/cordovasample www     
+    git clone https://github.com/mozilla-cordova/cordovasample www     
 
 The Geolocation example uses Three.js and Globe.js and functions better on later versions of Firefox OS 1.2 or greater  
 
 See Hacks Blog Post for more details  
 https://hacks.mozilla.org/2014/02/building-cordova-apps-for-firefox-os/
+
+Add Firefox OS as a platform:
+
+    cordova platform add firefoxos
 
 Make sure to use the cordova plugin add command to add the following plugins:  
   'org.apache.cordova.camera',  
