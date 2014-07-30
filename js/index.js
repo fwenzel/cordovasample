@@ -18,6 +18,7 @@
  */
 //Landscape vs Portrait
 window.onload = init;
+var _l;
 
 //Initialize the app
 function init() {
@@ -30,6 +31,7 @@ var app = {
     // Application Constructor
     initialize: function () {
         console.log("initializing...");
+        _l = navigator.mozL10n.get;
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -92,7 +94,7 @@ var app = {
             flipbox.showFront();
 
             back.classList.remove('open');
-            appbar.heading = 'Cordova <3 Firefox OS';
+            appbar.heading = _l('cordova-love-ffos');
         }
 
         // Set the contents of the screen. Used by demos to
@@ -124,16 +126,19 @@ var app = {
         }
 
         function online() {
-            alert("Online");
+            alert(_l('online'));
         }
 
         function offline() {
-            alert("Offline");
+            alert(_l('offline'));
         }
 
         function onBatteryStatus(info) {
                 // Handle the online event
-                writeText("Level: " + info.level + " isPlugged: " + info.isPlugged);
+                var msg = _l('battery-level-is-plugged',
+                            {level: info.level, isplugged: _l(info.isPlugged.toString())});
+                console.log(msg);
+                writeText(msg);
             }
             // The "back" button will appear in the header on the demo
             // pages. Make it flip back to the navigation and clear any
@@ -206,7 +211,7 @@ var app = {
             var ptArray = [];
             var canvas = null;
             var context = null;
-            flipDemo('Accelerometer');
+            flipDemo(_l('accelerometer'));
             //Setup the canavs
             canvas = document.createElement('canvas');
             setOutput(canvas);
@@ -303,7 +308,7 @@ var app = {
             var bCanvas = null;
             var canvas = null;
             var context = null;
-            flipDemo('Device Motion');
+            flipDemo(_l('device-motion'));
             //This function creates an offscreen canvas to create a ball
 
             function setupBallCanvas() {
@@ -387,7 +392,7 @@ var app = {
         //this uses a modified globe.js and three.js
         //Best to run with Firefox OS 1.2 and higher
         function runGeo() {
-            flipDemo('Geolocation');
+            flipDemo(_l('geolocation'));
 
             var loading = document.createElement('div');
             loading.className = 'loading';
@@ -425,7 +430,7 @@ var app = {
 
         //This function demonstrates the compass functions
         function runCompass() {
-            flipDemo('Compass');
+            flipDemo(_l('compass'));
             var img = null;
             var gImg = null;
             var myHeading = 0;
@@ -499,7 +504,7 @@ var app = {
             }
 
             function onError(compassError) {
-                    alert('Compass error: ' + compassError.code);
+                    alert(_l('compass-error', {code: compassError.code}));
                 }
                 //Setup the compass to read every 100ms
             var options = {
@@ -533,15 +538,16 @@ var app = {
         //Test the Notification API
         function runPro() {
             function onPrompt(results) {
-                alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+                alert(_l('button-number-entered', 
+                         {index: results.buttonIndex, input: results.input1}));
             }
             navigator.notification.vibrate(500);
             navigator.notification.prompt(
-                'Enter Name', // message
+                _l('enter-name'), // message
                 onPrompt, // callback to invoke
-                'Prompt Test', // title
-                ['Ok', 'Exit'], // buttonLabels
-                'Doe, Jane' // defaultText
+                _l('propmpt-test'), // title
+                [_l('ok'), _l('exit')], // buttonLabels
+                _l('doe-jane') // defaultText
             );
 
         }
@@ -607,7 +613,7 @@ var app = {
                             //console.log("Name = " + contacts[i].name.givenName + "," + contacts[i].name.familyName + " emails " + contacts[i].emails);
                             if (contacts[i].name.givenName == fname && contacts[i].name.familyName == lname) {
                                 //Contact exists already
-                                alert("name already added");
+                                alert(_l('name-already-added'));
                                 flipMain();
                                 return;
                             }
@@ -625,7 +631,7 @@ var app = {
                 }
             }
 
-            flipDemo('Contact');
+            flipDemo(_l('contact'));
             var form = document.querySelector('.contactForm').cloneNode(true);
             setOutput(form);
 
@@ -664,11 +670,7 @@ var app = {
                 dirReader.readEntries(success, fail);
             }
 
-
-
-
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-
 
             function gotFS(fileSystem) {
                 fs = fileSystem;
@@ -715,14 +717,14 @@ var app = {
         }
 
         function openBrowser() {
-            flipDemo('InAppBrowser');
+            flipDemo(_l('in-app-browser-short'));
             browserRef = window.open('https://developer.mozilla.org', '_blank', 'location=yes');
             var el = document.querySelector(".inAppBrowserWrap");
             setOutput(el);
         }
 
         function getNetInfo() {
-            flipDemo('Net Info');
+            flipDemo(_l('network-info'));
             var networkState = navigator.connection.type;
 
             writeText('Connection type: ' + networkState);
@@ -733,7 +735,7 @@ var app = {
         }
 
         function batteryStats() {
-            flipDemo('Battery Status');
+            flipDemo(_l('battery-status'));
             window.addEventListener("batterystatus", onBatteryStatus, false);
             batteryEvent = true;
         }

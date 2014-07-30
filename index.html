@@ -29,39 +29,40 @@
     <link rel="stylesheet" type="text/css" href="css/pre.css" />
     
     
+    <link rel="resource" type="application/l10n" href="locales/content.ini"/>
 
 	<link rel="stylesheet" type="text/css" href="css/leaflet.css">
     
-    <title>Firefox OS - Cordova Test App</title>
+    <title data-l10n-id="title">Firefox OS - Cordova Test App</title>
 
   </head>
   <body>
     <x-layout>
       <header>
         <x-appbar>
-          <button class="back">back</button>
-          <header>Cordova &lt;3 Firefox OS</header>
+          <button class="back" data-l10n-id="back">back</button>
+          <header data-l10n-id="cordova-love-ffos">Cordova &lt;3 Firefox OS</header>
         </x-appbar>
       </header>
       <section>
         <x-flipbox>
           <div>
             <div id="deviceready" class="blink">
-              <p class="event listening">Connecting to Device</p>
-              <p class="event received">Device is Ready</p>
+              <p class="event listening" data-l10n-id="connecting-to-device">Connecting to Device</p>
+              <p class="event received" data-l10n-id="device-is-ready">Device is Ready</p>
             </div>
 
-            <button id="getPicture">Get Picture</button>
-            <div id="addcontact"><button id="runPro">Prompt/Vibrate</button></div>
-            <button id="getAccel">Display Accelerometer</button>
-            <button id="runAccel">Run Device Motion</button>
-            <button id="runGeo">Geolocation</button>
-            <button id="runCompass">Compass</button>
-            <button id="addNewContact">Add Contact</button>
-            <button id="addNewFile">Add File</button>
-            <button id="inAppBrowser">In App Browser</button>
-            <button id="netInfo">Network Information</button>
-            <button id="batteryInfo">Battery Status</button>
+            <button id="getPicture" data-l10n-id="get-picture">Get Picture</button>
+            <div id="addcontact"><button id="runPro" data-l10n-id="prompt-vibrate">Prompt/Vibrate</button></div>
+            <button id="getAccel" data-l10n-id="display-accelerometer">Display Accelerometer</button>
+            <button id="runAccel" data-l10n-id="run-device-motion">Run Device Motion</button>
+            <button id="runGeo" data-l10n-id="geolocation">Geolocation</button>
+            <button id="runCompass" data-l10n-id="compass">Compass</button>
+            <button id="addNewContact" data-l10n-id="add-contact">Add Contact</button>
+            <button id="addNewFile" data-l10n-id="add-file">Add File</button>
+            <button id="inAppBrowser" data-l10n-id="in-app-browser">In App Browser</button>
+            <button id="netInfo" data-l10n-id="network-info">Network Information</button>
+            <button id="batteryInfo" data-l10n-id="battery-status">Battery Status</button>
             </div>
           <div></div>
         </x-flipbox>
@@ -70,18 +71,19 @@
 
  
     <div class="contactForm">
-      <div class="field">
+      <div class="field" data-l10n-id="first-name">
         First Name: <input type="text" id="fname">
       </div>
-      <div class="field">
+      <div class="field" data-l10n-id="last-name">
         Last name: <input type="text" id="lname">
       </div>
-      <div class="field">
+      <div class="field" data-l10n-id="e-mail">
         E-mail: <input type="email" id="email">
       </div>
-      <button class="save">Save</button>
+      <button class="save" data-l10n-id="save">Save</button>
     </div>
 
+    <script type="text/javascript" src="js/l10n.js"></script>
     <script type="text/javascript" src="js/brick-0.10.0.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/three.min.js"></script>
