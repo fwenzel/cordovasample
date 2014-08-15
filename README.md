@@ -34,16 +34,16 @@ cordova platform add firefoxos
 
 Make sure to use the ``cordova plugin add`` command to add the following plugins:
 
-  'org.apache.cordova.camera',
-  'org.apache.cordova.contacts',
-  'org.apache.cordova.device',
-  'org.apache.cordova.device-motion',
-  'org.apache.cordova.device-orientation',
-  'org.apache.cordova.dialogs',
-  'org.apache.cordova.file',
-  'org.apache.cordova.geolocation',
-  'org.apache.cordova.inappbrowser',
-  'org.apache.cordova.vibration',
-  'org.apache.cordova.battery-status'
+* ``org.apache.cordova.camera``
+* ``org.apache.cordova.contacts``
+* ``org.apache.cordova.device``
+* ``org.apache.cordova.device-motion``
+* ``org.apache.cordova.device-orientation``
+* ``org.apache.cordova.dialogs``
+* ``org.apache.cordova.file``
+* ``org.apache.cordova.geolocation``
+* ``org.apache.cordova.inappbrowser``
+* ``org.apache.cordova.vibration``
+* ``org.apache.cordova.battery-status``
 
 Currently you will need to take the manifest.webapp file in the source and copy it to the merges/firefoxos directory.
